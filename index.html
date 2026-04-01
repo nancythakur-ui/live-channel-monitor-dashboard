@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Monitor App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div class="login-container" id="login-container">
+    <h1>🔐 Channel Monitor Login</h1>
+    <input type="email" id="email" placeholder="Enter Email">
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <p id="login-msg"></p>
+  </div>
+
+  <!-- Dashboard Wrapper -->
+  <div id="dashboard-wrapper" class="hidden">
+    <!-- Welcome Message -->
+    <div id="welcome-msg" class="welcome-msg hidden">
+      🎉 Welcome to Nancy's Channel Monitor Dashboard!
+    </div>
+
+    <!-- Page 1 -->
+    <div class="app-container hidden" id="app-container-1">
+      <h1>📡 Live Channel Monitor Dashboard</h1>
+      <div class="top-bar">
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        <button class="switch-btn" onclick="switchPage(2)">➡ Go to App TV Monitor Dashboard</button>
+      </div>
+      <div class="input-section">
+        <h2>Check Channels</h2>
+        <label for="channel-link">Paste Your Channel Link:</label>
+        <input type="text" id="channel-link" placeholder="Enter live channel URL">
+        <button onclick="runCheck()">Run Check</button>
+        <hr style="margin:15px 0;">
+        <label for="channel-file">Upload CSV file with channels:</label>
+        <input type="file" id="channel-file" accept=".csv">
+        <button onclick="runMonitor()">Run CSV Monitor</button>
+      </div>
+      <div class="options">
+        <h2>Generate Reports</h2>
+        <button onclick="generateReport('daily')">Daily</button>
+        <button onclick="generateReport('weekly')">Weekly</button>
+        <button onclick="generateReport('monthly')">Monthly</button>
+      </div>
+      <div class="results">
+        <h2>Results</h2>
+        <pre id="output">No results yet...</pre>
+      </div>
+      <div class="filters">
+        <h2>Channel Filters</h2>
+        <div>
+          <button onclick="filterChannel('notworking')">Not Working</button>
+          <button onclick="downloadFiltered('notworking')">⬇ Download Report</button>
+        </div>
+        <div>
+          <button onclick="filterChannel('working')">Working</button>
+          <button onclick="downloadFiltered('working')">⬇ Download Report</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="app-container hidden" id="app-container-2">
+      <h1>📺 App TV Monitor Dashboard</h1>
+      <div class="top-bar">
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        <button class="switch-btn" onclick="switchPage(1)">⬅ Back to Live Channel Monitor Dashboard</button>
+        <button class="switch-btn" onclick="switchPage(3)">➡ Go to Cinema & Movie Monitor Dashboard</button>
+      </div>
+      <div class="input-section">
+        <h2>Check Channels</h2>
+        <label for="channel-link-2">Paste Your Channel Link:</label>
+        <input type="text" id="channel-link-2" placeholder="Enter live channel URL">
+        <button onclick="runCheck(2)">Run Check</button>
+        <hr style="margin:15px 0;">
+        <label for="channel-file-2">Upload CSV file with channels:</label>
+        <input type="file" id="channel-file-2" accept=".csv">
+        <button onclick="runMonitor(2)">Run CSV Monitor</button>
+      </div>
+      <div class="options">
+        <h2>Generate Reports</h2>
+        <button onclick="generateReport('daily', 2)">Daily</button>
+        <button onclick="generateReport('weekly', 2)">Weekly</button>
+        <button onclick="generateReport('monthly', 2)">Monthly</button>
+      </div>
+      <div class="results">
+        <h2>Results</h2>
+        <pre id="output-2">No results yet...</pre>
+      </div>
+      <div class="filters">
+        <h2>Channel Filters</h2>
+        <div>
+          <button onclick="filterChannel('notworking', 2)">Not Working</button>
+          <button onclick="downloadFiltered('notworking', 2)">⬇ Download Report</button>
+        </div>
+        <div>
+          <button onclick="filterChannel('working', 2)">Working</button>
+          <button onclick="downloadFiltered('working', 2)">⬇ Download Report</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Page 3 -->
+    <div class="app-container hidden" id="app-container-3">
+      <h1>🎬 Cinema & Movie Monitor Dashboard</h1>
+      <div class="top-bar">
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        <button class="switch-btn" onclick="switchPage(2)">⬅ Back to App TV Monitor Dashboard</button>
+      </div>
+
+      <div class="input-section">
+        <h2>Check Movie Links</h2>
+        <label>Paste Your Movie Link:</label>
+        <input type="text" id="movie-link" placeholder="Enter movie URL">
+        <button onclick="checkMovieLink()">Run Check</button>
+
+        <hr style="margin:15px 0;">
+
+        <h2>Check Poster Links</h2>
+        <label>Paste Poster Image Link:</label>
+        <input type="text" id="poster-link" placeholder="Enter poster image URL">
+        <button onclick="checkPosterLink()">Run Check</button>
+
+        <hr style="margin:15px 0;">
+        <label>Upload CSV file with movie links:</label>
+        <input type="file" id="movie-file" accept=".csv">
+        <button onclick="runMovieMonitor()">Run CSV Monitor</button>
+      </div>
+
+      <div class="options">
+        <h2>Trending Movies This Week</h2>
+        <button onclick="getTrending('hotstar')">🔥 JioHotstar</button>
+        <button onclick="getTrending('primevideo')">🎥 Prime Video</button>
+        <button onclick="getTrending('netflix')">🍿 Netflix</button>
+        <button onclick="getTrending('zee5')">📺 Zee5</button>
+        <button onclick="getTrending('sonyliv')">🎬 SonyLIV</button>
+      </div>
+
+      <div class="results">
+        <h2>Results</h2>
+        <pre id="output-3">No results yet...</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

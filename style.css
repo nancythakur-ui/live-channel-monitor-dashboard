@@ -1,0 +1,172 @@
+/* ---------------- General ---------------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url('background.jpg') no-repeat center center fixed; /* Replace with your image */
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Optional: overlay for better readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(135, 206, 235, 0.3); /* light blue overlay */
+  z-index: -1;
+}
+
+/* ---------------- Hidden class ---------------- */
+.hidden {
+  display: none;
+}
+
+/* ---------------- Login Screen ---------------- */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.login-container h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.login-container button {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.login-container button:hover {
+  background: #2980b9;
+}
+
+#login-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* ---------------- Dashboard ---------------- */
+#app-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.9); /* semi-transparent */
+  position: relative;
+}
+
+.app-container h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Welcome message */
+.welcome-msg {
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Top bar */
+.top-bar {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.logout-btn {
+  background: #e74c3c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
+/* ---------------- Sections ---------------- */
+.input-section, .options, .results, .filters {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Input */
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  margin: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+/* Results */
+.results pre {
+  background: #272822;
+  color: #f8f8f2;
+  padding: 12px;
+  border-radius: 6px;
+  min-height: 100px;
+  overflow-x: auto;
+}
+
+/* Options / Filters Buttons */
+.options button, .filters button {
+  background: #1abc9c;
+}
+
+.options button:hover, .filters button:hover {
+  background: #16a085;
+}
